@@ -1,111 +1,105 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+@plugin "daisyui" {
+  themes: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #112a54;
+  --color-primary-content:#152033;
+  --color-secondary: #f4ca40;
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f6fa;
+  --color-base-300: #d9e0ec;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --color-base-content: #2b66ac ;
+  
 }
 
-body {
-  margin: 0;
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  --color-primary: #227bbf;
+  --color-primary-content: #ffffff;
+
+ --color-secondary: #152033;
+
+   --color-base-100: #101f3b;    /* Main background */
+  --color-base-200: #0b1733; /* Secondary background */
+  --color-base-300: #263958;  /* Border / deeper surface */
+
+  --color-base-content: #f4ca40;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+
+
+/* #0f2244  #223457   #fbd14a #f1a833*/
+.btn-primary{
+  background: linear-gradient(135deg,#112a54,#27447d);
+  color: white;
+  border: none;
+}
+.btn-primary:hover{
+  background: linear-gradient(120deg,#112a54,#1a2c4f);
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+.text-stroke{
+  -webkit-text-stroke:1px #a38319 ;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+[data-theme="dark"] .btn-primary{
+  background: linear-gradient(135deg, #234477, #2b66ac);
+  color: #f4ca40;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+[data-theme="dark"] .btn-primary:hover{
+  background: linear-gradient(135deg, #234477,#25599a );
+  
+   color: white
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+[data-theme="dark"] .text-stroke{
+  -webkit-text-stroke: 1px #152033;
 }
+
+
+
+/* .btn-secondary{
+  background: linear-gradient(135deg,#f4ca40,#d2b967);
+  color: white;
+  border: none;
+}
+.btn-secondary:hover{
+   background: linear-gradient(135deg,#eac036,#e3c35a);
+  color: white;
+  border: none;
+} */
+
+
+  
+  @utility text-gradient {
+  background-image: linear-gradient(
+    to right, #326a9f, #2266ac
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke:.5px white ;
+}
+
+[data-theme="dark"] .text-gradient{
+  background-image: linear-gradient(
+    to right, #f4ca40,#efc747
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0;
+}
+
